@@ -1,5 +1,7 @@
 import React, {Component } from 'react'
 import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
+import Header from './header'
+
 
 class Home extends Component{
     constructor(){
