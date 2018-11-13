@@ -10,11 +10,11 @@ const Login = (props) => {
             <div className = "card-body" >
                 <div>
                     <label className="col-md-6" >User Name :</label>
-                    <input className="col-md-6" type="text"/>
+                    <input className="col-md-6" type="text" value={props.username} onChange={props.updateUsername}/>
                 </div>
                 <div>
                     <label className="col-md-6" >Password :</label>
-                    <input className="col-md-6" type="password"/>
+                    <input className="col-md-6" type="password" value={props.password} onChange={props.updatePassword}/>
                 </div>
 
             </div>  
