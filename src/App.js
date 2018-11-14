@@ -29,7 +29,8 @@ class App extends Component {
                     method: 'get',
                     url: `http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC`,
                     headers: {
-                        'Authorization': "neha"
+                     //   'Authorization': "neha",
+                      //  'Access-Control-Allow-Headers' : 'http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC'
                     },
                 }).then(response => {
                         console.log("response ",response)

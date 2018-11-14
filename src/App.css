@@ -32,6 +32,13 @@
 }
 
 .App{
-  padding: 150px 0px 50px 0px;
   height: 750px;
+}
+
+.login{
+  padding: 150px 0px 50px 0px;
+}
+
+.welcome{
+  padding: 10px;
 }

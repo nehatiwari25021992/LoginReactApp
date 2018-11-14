@@ -4,16 +4,30 @@ import Header from './header'
 
 
 class Home extends Component{
+
+
+
     constructor(){
-        super()
+        super();
         console.log("Home constructor")
+        this.state = {
+            name : ''
+        }
     }
 
-    render(){
-        
-        if(this.props.name){
+    componentWillReceiveProps(){
+        console.log("state 1111",this.state);
+        this.setState({name:this.props.name});
+        console.log("state 1111222",this.state);
+    }
+
+    render(){        
+        if(this.props.name != ""){
             return (
-                <h1>Welcome : {this.props.name}</h1>
+                <>
+                    <Header username={this.props.name}/>
+                    <h1>{this.props.name}</h1>
+                </>
             )
         }else{
             return (<Redirect to="/"/>)
