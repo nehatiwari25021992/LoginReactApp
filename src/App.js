@@ -3,9 +3,10 @@ import './App.css';
 import './bootstrap.min.css';
 import Login from './login/login';
 import axios from 'axios';
-import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
+import { BrowserRouter as Router, Redirect} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import Home from './dashboard/home';
+import Galery from './dashboard/galery';
 
 class App extends Component {
     
@@ -57,24 +58,25 @@ class App extends Component {
 
     render() {
         return ( 
-            <Router>
-                <div className = "App bg-info" >
-                    <div className="col-md-4"></div>
-
-
-                        <Route path="/" exact strict render={()=>(
-                            this.state.isLoggedIn ? ( <Redirect to="/dashboard"/>) :
-                            <Login updatePassword={this.updatePassword.bind(this)} updateUsername={this.updateUsername.bind(this)}  loginNow={this.login} username={this.state.username} password={this.state.password}/>)
-                        }/>
+            <Router>    
+                <div> 
+                    <Route path="/" exact strict render={()=>(
+                        this.state.isLoggedIn ? ( <Redirect to="/dashboard"/>) :
+                        <Login updatePassword={this.updatePassword.bind(this)} updateUsername={this.updateUsername.bind(this)}  loginNow={this.login} username={this.state.username} password={this.state.password}/>)
+                    }/>
 
                     <Route path="/dashboard" exact strict render={
                             () => {
                                 return ( <Home name={this.state.username}/>);
                             }
-                    }/>
+                    }/>   
 
-                    <div className="col-md-4"></div>
-                </div>    
+                    <Route path="/galery" exact strict render={
+                            () => {
+                                return (<Galery name={this.state.username}/>);
+                            }
+                    }/> 
+                </div>            
             </Router>
         );
     }

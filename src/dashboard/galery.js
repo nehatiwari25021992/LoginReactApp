@@ -1,8 +1,9 @@
-import React, {Component } from 'react'
-import {Redirect} from 'react-router-dom';
+import React, {Component} from 'react';
 import Header from './header';
+import {Redirect} from 'react-router-dom';
 
-class Home extends Component{
+class Galery extends Component{
+
     constructor(props){
         super(props);
         this.state = {
@@ -15,11 +16,11 @@ class Home extends Component{
     }
 
     render(){        
-        if(this.state.name != ""){
+        if(this.state.name !== ""){
             return (
                 <div className="App bg-info">
                     <Header username={this.props.name}/>
-                        hi!!!!!!!!!
+                       galery!!!!!!!!!
                 </div>
             )
         }else{
@@ -28,4 +29,4 @@ class Home extends Component{
     }
 }
 
-export default Home;
+export default Galery;

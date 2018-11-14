@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
+import { BrowserRouter as Router, Link, NavLink} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
 
 class Header extends PureComponent{
-    constructor(){
-      super()
+    constructor(props){
+      super(props)
         console.log("Header constructor")
     }
     
@@ -20,10 +22,17 @@ class Header extends PureComponent{
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                      <a className="nav-link">Home </a>
+                          <NavLink className="nav-link" to='/dashboard' exact activeStyle={
+                                    { color:'green' }
+                                  }>Home
+                          </NavLink>
+                     
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link">Galary</a>
+                          <NavLink className="nav-link" to='/galery' exact activeStyle={
+                                    { color:'green' }
+                                  }>Galery
+                          </NavLink>
                     </li>
                   </ul>
                   <div className="form-inline my-2 my-lg-0">
