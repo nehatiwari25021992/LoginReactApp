@@ -14,11 +14,13 @@ class Home extends Component{
         this.setState({name:this.props.name});
     }
 
+    
+
     render(){        
         if(this.state.name != ""){
             return (
                 <div className="App bg-info">
-                    <Header username={this.props.name}/>
+                    <Header username={this.props.name} logout={this.props.logout}/>
                         hi!!!!!!!!!
                 </div>
             )

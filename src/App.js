@@ -56,25 +56,39 @@ class App extends Component {
         this.setState({password : e.target.value})
     }
 
+    logout = () => {
+        console.log("******************")
+        this.setState({isLoggedIn:false})
+      }
+
+
     render() {
+        console.log("*******this.state.isLoggedIn ***********",this.state.isLoggedIn)
         return ( 
             <Router>    
                 <div> 
                     <Route path="/" exact strict render={()=>(
                         this.state.isLoggedIn ? ( <Redirect to="/dashboard"/>) :
-                        <Login updatePassword={this.updatePassword.bind(this)} updateUsername={this.updateUsername.bind(this)}  loginNow={this.login} username={this.state.username} password={this.state.password}/>)
+                        <Login updatePassword={this.updatePassword.bind(this)} 
+                        updateUsername={this.updateUsername.bind(this)}  
+                        loginNow={this.login} username={this.state.username}
+                         password={this.state.password}/>)
                     }/>
 
-                    <Route path="/dashboard" exact strict render={
-                            () => {
-                                return ( <Home name={this.state.username}/>);
-                            }
+                    <Route path="/dashboard" exact strict render={()=>(
+                            this.state.isLoggedIn ? (<Home name={this.state.username} logout={this.logout.bind()} />) :
+                            <Login updatePassword={this.updatePassword.bind(this)} 
+                            updateUsername={this.updateUsername.bind(this)}  
+                            loginNow={this.login} username={this.state.username}
+                             password={this.state.password}/>)
                     }/>   
 
-                    <Route path="/galery" exact strict render={
-                            () => {
-                                return (<Galery name={this.state.username}/>);
-                            }
+                    <Route path="/galery" exact strict render={()=>(
+                            this.state.isLoggedIn ? (<Galery name={this.state.username} logout={this.logout.bind()} />) :
+                            <Login updatePassword={this.updatePassword.bind(this)} 
+                            updateUsername={this.updateUsername.bind(this)}  
+                            loginNow={this.login} username={this.state.username}
+                             password={this.state.password}/>)
                     }/> 
                 </div>            
             </Router>

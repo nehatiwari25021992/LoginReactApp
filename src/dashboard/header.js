@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import { BrowserRouter as Router, Link, NavLink} from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, NavLink} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 
 class Header extends PureComponent{
@@ -7,7 +7,8 @@ class Header extends PureComponent{
       super(props)
         console.log("Header constructor")
     }
-    
+  
+
     render(){
         return(
             <>
@@ -37,7 +38,9 @@ class Header extends PureComponent{
                   </ul>
                   <div className="form-inline my-2 my-lg-0">
                    <label className="welcome">Welcome : {this.props.username}</label> 
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+                    <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.props.logout} >
+                      Logout
+                    </button>
                   </div>
                 </div>
               </nav>
