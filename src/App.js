@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component , lazy,Suspense} from 'react';
 import './App.css';
 import './bootstrap.min.css';
 import Login from './login/login';
@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Redirect} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import Home from './dashboard/home';
 import Galery from './dashboard/galery';
+//const Galery = lazy( () => import('./dashboard/galery'));
 
 class App extends Component {
     
@@ -82,14 +83,15 @@ class App extends Component {
                             loginNow={this.login} username={this.state.username}
                              password={this.state.password}/>)
                     }/>   
-
-                    <Route path="/galery" exact strict render={()=>(
-                            this.state.isLoggedIn ? (<Galery name={this.state.username} logout={this.logout.bind()} />) :
-                            <Login updatePassword={this.updatePassword.bind(this)} 
-                            updateUsername={this.updateUsername.bind(this)}  
-                            loginNow={this.login} username={this.state.username}
-                             password={this.state.password}/>)
-                    }/> 
+                  
+                            <Route path="/galery" exact strict render={()=>(
+                                    this.state.isLoggedIn ? (<Galery name={this.state.username} logout={this.logout.bind()} />) :
+                                    <Login updatePassword={this.updatePassword.bind(this)} 
+                                    updateUsername={this.updateUsername.bind(this)}  
+                                    loginNow={this.login} username={this.state.username}
+                                    password={this.state.password}/>)
+                            }/> 
+               
                 </div>            
             </Router>
         );

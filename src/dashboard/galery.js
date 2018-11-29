@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component , lazy,Suspense} from 'react';
 import Header from './header';
 import {Redirect} from 'react-router-dom';
+const Pictures = lazy( () => import('./pictures'));
 
 class Galery extends Component{
 
@@ -20,7 +21,9 @@ class Galery extends Component{
             return (
                 <div className="App bg-info">
                     <Header username={this.props.name}/>
-                       galery!!!!!!!!!
+                    <Suspense fallback={<div>Loading ....</div>}>
+                         <Pictures></Pictures>
+                     </Suspense>
                 </div>
             )
         }else{
